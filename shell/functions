@@ -2,6 +2,44 @@
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
+# Git time message with 
+
+gtime() {
+   
+   if [ $# -eq 0  ]; then
+     
+       echo 'Usage: gtime 2016-05-11T22:13:13 -m "this is my commit message"'
+   
+   else
+        
+        echo "GIT_AUTHOR_DATE=$1T22:13:13 GIT_COMMITTER_DATE=$1T22:13:13 git commit ${@:2}"
+        
+        GIT_AUTHOR_DATE="$1T22:13:13" GIT_COMMITTER_DATE="$1T22:13:13" git commit "${@:2}"
+   
+   fi  
+}
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+# Commit git message with all changes
+
+gcommit() {
+   
+   if [ $# -eq 0  ]; then
+     
+       echo 'Usage: gcommit this is my commit message'
+   
+   else
+
+      echo "git commit -am $* && git push"
+
+      git commit -am "$*" && git push
+   
+   fi  
+}
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 # Create data URI from a file
 
 datauri() {
